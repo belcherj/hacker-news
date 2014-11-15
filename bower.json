@@ -2,12 +2,25 @@
   "name": "hacker-news",
   "version": "0.0.1",
   "dependencies": {
-    "core-ajax": "Polymer/core-ajax#~0.4.2",
-    "polymer": "Polymer/polymer#~0.4.2",
-    "core-toolbar": "Polymer/core-toolbar#~0.4.2",
-    "firebase-element": "Polymer/firebase-element#~0.4.2",
-    "web-component-tester": "Polymer/web-component-tester#~1.2.0",
-    "paper-item": "Polymer/paper-item#~0.4.2",
-    "core-component-page": "Polymer/core-component-page#~0.4.2"
+    "core-ajax": "Polymer/core-ajax#~0.5.1",
+    "polymer": "Polymer/polymer#~0.5.1",
+    "core-toolbar": "Polymer/core-toolbar#~0.5.1",
+    "firebase-element": "Polymer/firebase-element#~0.5.1",
+    "web-component-tester": "Polymer/web-component-tester#~1.6.1",
+    "paper-item": "Polymer/paper-item#~0.5.1",
+    "core-component-page": "Polymer/core-component-page#~0.5.1"
+  },
+  "resolutions": {
+    "core-component-page": "~0.5.1",
+    "core-icon-button": "^0.5.0",
+    "core-icons": "^0.5.0",
+    "core-icon": "^0.5.0",
+    "core-iconset": "^0.5.0",
+    "core-meta": "^0.5.0",
+    "core-iconset-svg": "^0.5.0",
+    "core-media-query": "^0.5.0",
+    "paper-ripple": "^0.5.0",
+    "font-roboto": "^0.5.0",
+    "polymer": "~0.5.1"
   }
 }

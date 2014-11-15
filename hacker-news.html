@@ -9,16 +9,21 @@
   <template>
 
     <link rel="stylesheet" href="hacker-news.css">
-    <firebase-element location="https://hacker-news.firebaseio.com/v0/topstories" data="{{data}}"></firebase-element>
+    <firebase-element location="https://hacker-news.firebaseio.com/v0/topstories" data="{{items}}"></firebase-element>
 
     <core-toolbar>
       <div id="page-title" flex>Polymer &#60;hacker-news&#62;</div>
     </core-toolbar>
 
     <ul>
-      <template repeat="{{item in items}}">
+      <template repeat="{{item, i in items}}">
         <li>
-            <a href="{{item.url}}">{{item.title}}</a>
+            <core-ajax
+              auto
+              url="https://hacker-news.firebaseio.com/v0/item/{{item}}.json"
+              handleAs="json"
+              response="{{stories[i]}}"></core-ajax>
+            <a href="{{stories[i].url}}">{{stories[i].title}}</a>
         </li>
       </template>
     </ul>
@@ -29,25 +34,10 @@
       'use strict';
 
       Polymer({
-        dataChanged: function() {
-          if( !this.data ){
-            return;
-          }
-          if( this.items && this.items.length > 1 ) {
-            return;
-          }
-          this.items = [];
-          for( var i = 0; i < this.data.length; i++) {
-            var item = document.createElement( 'core-ajax' );
-            item.url = 'https://hacker-news.firebaseio.com/v0/item/' +this.data[i] + '.json';
-            item.addEventListener("core-response", function(e) {
-                this.items.push( e.detail.response );
-              }.bind( this )
-            );
-            item.go();
-          }
-
+        publish: {
+          stories: []
         }
+
       });
 
     })();
