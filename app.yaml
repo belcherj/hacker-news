@@ -1,0 +1,19 @@
+application: hn-clone
+version: 1
+runtime: python27
+api_version: 1
+threadsafe: yes
+
+handlers:
+
+  - url: /(.+)
+    static_files: \1
+    upload: (.*)
+
+  - url: /
+    static_files: demo.html
+    upload: demo.html
+
+libraries:
+- name: webapp2
+  version: "2.5.2"
