@@ -5,15 +5,47 @@
         <meta
             name="viewport"
             content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
-        <script src="bower_components/platform/platform.js"></script>
+        <script src="bower_components/webcomponentsjs/webcomponents.js"></script>
         <link rel="import" href="bower_components/polymer/polymer.html">
-        <link rel="import" href="bower_components/core-component-page/core-component-page.html">
+
+        <link rel="import" href="bower_components/core-ajax/core-ajax.html">
+        <link rel="import" href="bower_components/core-toolbar/core-toolbar.html">
+        <link rel="import" href="bower_components/firebase-element/firebase-element.html">
+        <link rel="import" href="bower_components/paper-item/paper-item.html">
+
+        <link rel="stylesheet" href="hacker-news.css">
 
     </head>
 
     <body unresolved>
 
-        <core-component-page></core-component-page>
+      <template id="page" is=auto-binding>
+
+          <firebase-element location="https://hacker-news.firebaseio.com/v0/topstories" data="{{items}}"></firebase-element>
+
+          <core-toolbar>
+            <div id="page-title" flex>Polymer &#60;hacker-news&#62;</div>
+          </core-toolbar>
+
+          <ul>
+            <template repeat="{{item, i in items}}">
+              <li>
+                  <core-ajax
+                    auto
+                    url="https://hacker-news.firebaseio.com/v0/item/{{item}}.json"
+                    handleAs="json"
+                    response="{{stories[i]}}"></core-ajax>
+                  <a href="{{stories[i].url}}">{{stories[i].title}}</a>
+              </li>
+            </template>
+          </ul>
+
+      </template>
+
+      <script>
+        var t = document.querySelector('#page');
+        t.stories = [];
+      </script>
 
     </body>
 </html>

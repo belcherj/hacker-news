@@ -11,8 +11,8 @@ handlers:
     upload: (.*)
 
   - url: /
-    static_files: demo.html
-    upload: demo.html
+    static_files: index.html
+    upload: index.html
 
 libraries:
 - name: webapp2
